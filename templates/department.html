@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col md-12">
+    <table class="table align-middle mb-0 bg-white">
+      <p>
+        <h2 class="float-left">Department <a href="{{url_for('create_employee')}}" class="btn btn-primary " style="float:right;">Add Employee</a></h2>
+        <!-- <h2 class="float-left">{{heading}} <a href="{{url_for('create_employee')}}" class="btn btn-primary " style="float:right;">Add Employee</a></h2> -->
+
+      </p>
+
+        <thead class="bg-light">
+          <tr>
+            <th>Department Name</th>            
+            <th>View Employees</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in department_data %}
+            <tr>
+              <td>
+                <p class="fw-normal mb-1">{{row.department}}</p>
+              </td>
+              <td>
+                <a href="{{url_for('view_department_employees', department=row.department)}}" class="btn btn-primary">View</a>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+</div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col md-12">
+    <table class="table align-middle mb-0 bg-white">
+      <p>
+      <h2><a href="{{url_for('department')}}">Department</a> > {{department}} <a href="{{url_for('create_employee')}}" class="btn btn-primary " style="float:right;">Add Employee</a></h2>
+      </p>
+
+        <thead class="bg-light">
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Hire Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in employee_data%}
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                      src="https://as2.ftcdn.net/v2/jpg/02/29/75/83/1000_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                      alt=""
+                      style="width: 45px; height: 45px"
+                      class="rounded-circle"
+                      />
+                  <div class="ms-3">
+
+                    <p class="fw-bold mb-1"><a href="{{url_for('get_employee', id=row.id)}}">{{row.name}}</a></p>
+
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal mb-1">{{row.department}}</p>
+              </td>
+              <td>
+                <p class="fw-normal mb-1">{{row.salary}}</p>
+              </td>
+              <td>{{row.hire_date.split()[0]}}</td>
+              <td>
+                <!-- <form action="{{url_for('update_employee', id=row.id)}}" method="PUT">
+                  <button type="submit" class="btn btn-link btn-sm btn-rounded">Edit</button>
+                </form>
+
+                <form action="{{url_for('delete_employee', id=row.id)}}" method="DELETE">
+                  <button type="submit" class="btn btn-link btn-sm btn-rounded">Edit</button>
+                </form> -->
+
+                <a href="{{url_for('update_employee', id=row.id)}}" class="btn btn-link btn-sm btn-rounded">Edit</a>
+                <a href="{{url_for('delete_employee', id=row.id)}}" class="btn btn-link btn-sm btn-rounded">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+</div>
+</div>
+
+{% endblock%}
