@@ -16,6 +16,7 @@
           <tr>
             <th>Department Name</th>            
             <th>View Employees</th>
+            <th>View Average Salary</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +26,10 @@
                 <p class="fw-normal mb-1">{{row.department}}</p>
               </td>
               <td>
-                <a href="{{url_for('view_department_employees', department=row.department)}}" class="btn btn-primary">View</a>
+                <a href="{{url_for('view_department_employees', department=row.department)}}" class="btn btn-primary btn-sm">View Employee</a>
+              </td>
+              <td>
+                <a href="{{url_for('get_average_salaries', department=row.department)}}" class="btn btn-primary btn-sm">View Average Salary</a>
               </td>
             </tr>
             {% endfor %}

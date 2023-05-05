@@ -26,8 +26,15 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
     <a href="{{url_for('employee')}}" class="btn btn-secondary m-2">Cancel</a></h2>
-    <form action="PUT"></form>
 
+    <div class="container h-100 d-flex justify-content-center">
+      <div class="jumbotron my-auto text-center">
+        {% for error in errors %}
+            <span style="color:red;">{{error}}</span><br>
+        {% endfor %}
+      </div>
+    </div>
+    
   </form>
 </div>
 </div>
